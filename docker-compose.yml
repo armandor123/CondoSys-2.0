@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: condosys-postgres
+
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "5434:5432"
+
+    volumes:
+      - condosys_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  condosys_postgres_data:
