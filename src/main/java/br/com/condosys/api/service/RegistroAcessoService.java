@@ -139,6 +139,7 @@ public class RegistroAcessoService {
 
 
         // Acesso autorizado normalmente precisa de autorização válida.
+        // Acesso autorizado normalmente precisa de autorização válida.
         if (
                 status == StatusAcesso.AUTORIZADO
                         && tipoMovimento == TipoMovimentoAcesso.ENTRADA
@@ -146,13 +147,16 @@ public class RegistroAcessoService {
         ) {
 
             if (autorizacao == null) {
-                // mantenha exatamente o código que já existe aqui
+                throw new IllegalArgumentException(
+                        "Uma autorização válida é obrigatória para registrar a entrada."
+                );
             }
 
             if (!autorizacao.estaValida()) {
-                // mantenha exatamente o código que já existe aqui
+                throw new IllegalArgumentException(
+                        "A autorização informada não está válida."
+                );
             }
-
         }
 
 

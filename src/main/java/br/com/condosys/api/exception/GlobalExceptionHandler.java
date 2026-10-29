@@ -247,4 +247,33 @@ public class GlobalExceptionHandler {
                         "erro", exception.getMessage()
                 ));
     }
+
+    // Regra de negócio inválida -> HTTP 400.
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> tratarArgumentoInvalido(
+            IllegalArgumentException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of(
+                        "erro",
+                        exception.getMessage()
+                ));
+    }
+
+
+    // Estado da operação inválido -> HTTP 409.
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<Map<String, String>> tratarEstadoInvalido(
+            IllegalStateException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Map.of(
+                        "erro",
+                        exception.getMessage()
+                ));
+    }
 }
