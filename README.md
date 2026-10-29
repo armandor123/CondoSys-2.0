@@ -1,82 +1,114 @@
 # CondoSys 2.0
 
-Sistema de gestão condominial desenvolvido como evolução arquitetural do projeto CondoSys.
+Sistema web de gestão condominial desenvolvido como evolução do projeto acadêmico **CondoSys**, originalmente criado como uma aplicação desktop em Java.
 
-O **CondoSys 2.0** tem como objetivo centralizar e organizar processos relacionados à administração de condomínios, incluindo usuários, moradores, funcionários, visitantes, prestadores de serviço, controle de acesso, encomendas, reservas, ocorrências e demais rotinas operacionais.
+O **CondoSys 2.0** amplia a proposta inicial utilizando uma arquitetura cliente-servidor, API REST, banco de dados relacional e interface web.
 
-A nova versão está sendo desenvolvida com **Java 21, Spring Boot e PostgreSQL**, utilizando uma arquitetura em camadas e API REST.
+O sistema tem como objetivo centralizar processos comuns da gestão de condomínios, como cadastro de pessoas, usuários, proprietários, unidades, visitantes, autorizações de acesso, registros de entrada e saída, encomendas e outras rotinas operacionais.
 
-> Projeto acadêmico em desenvolvimento. A aplicação ainda não está preparada para utilização em ambiente de produção.
-
----
-
-## Objetivo
-
-A primeira versão do CondoSys foi construída como uma aplicação desktop em Java.
-
-O CondoSys 2.0 representa uma evolução do projeto, com foco em:
-
-- arquitetura mais organizada e escalável;
-- separação entre backend e interfaces;
-- API REST;
-- banco de dados PostgreSQL;
-- versionamento do banco com Flyway;
-- regras de negócio centralizadas;
-- testes automatizados;
-- segurança de senhas;
-- futura integração com aplicações web e desktop.
+> Projeto acadêmico em desenvolvimento. O sistema representa um MVP funcional e ainda não está preparado para utilização em ambiente de produção.
 
 ---
 
-## Arquitetura
+## Evolução do projeto
 
-A aplicação segue uma arquitetura em camadas:
+A primeira versão do CondoSys foi desenvolvida como uma aplicação desktop utilizando Java.
+
+Na segunda versão, o projeto passou por uma reestruturação arquitetural, separando interface, regras de negócio e persistência.
 
 ```text
-Cliente
-   ↓
-Controller
-   ↓
-DTO / Validação
-   ↓
-Service
-   ↓
-Repository
-   ↓
-JPA / Hibernate
-   ↓
+CondoSys 1.0
+Java Desktop
+     ↓
+Evolução arquitetural
+     ↓
+CondoSys 2.0
+React + TypeScript
+     ↓
+API REST
+Java + Spring Boot
+     ↓
 PostgreSQL
 ```
 
-Cada camada possui uma responsabilidade específica.
-
-### Controller
-
-Responsável por receber as requisições HTTP e retornar as respostas da API.
-
-### DTO
-
-Controla os dados enviados e recebidos pelos endpoints.
-
-### Service
-
-Concentra as regras de negócio da aplicação.
-
-### Repository
-
-Responsável pela comunicação entre a aplicação e o banco de dados.
-
-### Domain
-
-Contém as entidades e regras relacionadas ao domínio do CondoSys.
+Essa evolução permite maior separação de responsabilidades, manutenção do código, escalabilidade e possibilidade de integração com diferentes interfaces.
 
 ---
 
-## Tecnologias
+# Arquitetura
+
+A aplicação utiliza uma arquitetura em camadas.
+
+```text
+Frontend
+React + TypeScript + Vite
+        ↓
+      HTTP
+        ↓
+Controller
+        ↓
+DTO / Validação
+        ↓
+Service
+        ↓
+Repository
+        ↓
+JPA / Hibernate
+        ↓
+PostgreSQL
+```
+
+## Frontend
+
+Responsável pela interface utilizada pelo usuário.
+
+Tecnologias principais:
+
+- React;
+- TypeScript;
+- Vite;
+- React Router;
+- Lucide React.
+
+O frontend consome a API REST disponibilizada pelo backend.
+
+---
+
+## Controller
+
+Responsável por receber as requisições HTTP e retornar as respostas da API.
+
+---
+
+## DTO
+
+Define os dados utilizados na comunicação entre cliente e servidor e auxilia na validação das requisições.
+
+---
+
+## Service
+
+Concentra as principais regras de negócio do sistema.
+
+---
+
+## Repository
+
+Responsável pela comunicação da aplicação com o banco de dados através do Spring Data JPA.
+
+---
+
+## Domain
+
+Contém as entidades, relacionamentos e regras relacionadas ao domínio do CondoSys.
+
+---
+
+# Tecnologias
 
 | Tecnologia | Utilização |
 | --- | --- |
-| Java 21 | Linguagem principal |
+| Java 21 | Linguagem principal do backend |
 | Spring Boot 4 | Framework backend |
 | Spring Web MVC | Construção da API REST |
 | Spring Data JPA | Persistência |
@@ -84,18 +116,21 @@ Contém as entidades e regras relacionadas ao domínio do CondoSys.
 | PostgreSQL 16 | Banco de dados |
 | Flyway | Versionamento do banco |
 | Jakarta Validation | Validação dos dados |
-| BCrypt | Hash das senhas |
+| BCrypt | Hash de senhas |
 | JUnit 5 | Testes automatizados |
-| Mockito | Simulação de dependências nos testes |
-| Maven | Gerenciamento de dependências |
-| Docker | Ambiente do banco |
+| Mockito | Simulação de dependências |
+| Maven | Gerenciamento do projeto backend |
+| React | Interface web |
+| TypeScript | Linguagem do frontend |
+| Vite | Ambiente de desenvolvimento frontend |
+| Docker | Execução do banco de dados |
 | Docker Compose | Orquestração local |
-| Git | Versionamento |
+| Git | Controle de versão |
 | GitHub | Repositório remoto |
 
 ---
 
-## Estrutura do projeto
+# Estrutura geral
 
 ```text
 CondoSys-2.0/
@@ -121,41 +156,59 @@ CondoSys-2.0/
 │   │       └── application.properties
 │   │
 │   └── test/
-│       └── java/
-│           └── br/com/condosys/api/
-│               └── service/
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
 │
 ├── .env.example
 ├── .gitignore
 ├── docker-compose.yml
 ├── mvnw
 ├── mvnw.cmd
-└── pom.xml
+├── pom.xml
+└── README.md
 ```
 
 ---
 
 # Domínio do sistema
 
-A modelagem atual possui como base:
+Entre as principais entidades atualmente utilizadas estão:
 
 ```text
 Pessoa
-  │
-  └── Usuario
-        │
-        ├── Administrador
-        ├── Porteiro
-        └── Proprietario
+ ├── Visitante
+ │
+ └── Usuario
+      ├── Administrador
+      ├── Porteiro
+      └── Proprietario
+
+Proprietario
+     ↓
+   Unidade
+
+Visitante
+     ↓
+Autorizacao
+     ↓
+RegistroAcesso
+
+Unidade
+     ↓
+ Encomenda
 ```
 
-Além desses perfis, o banco foi projetado para suportar outros módulos relacionados ao condomínio.
+O banco também possui estrutura para áreas comuns, reservas, prestadores de serviço e auditoria.
 
 ---
 
-## Pessoa
+# Pessoa
 
-`Pessoa` representa o cadastro-base utilizado pelo sistema.
+`Pessoa` representa o cadastro-base utilizado por diferentes módulos.
 
 Exemplos:
 
@@ -163,25 +216,24 @@ Exemplos:
 - visitantes;
 - prestadores de serviço.
 
-Principais funcionalidades implementadas:
+Entre as funcionalidades disponíveis estão:
 
 - cadastro;
 - listagem;
-- busca por UUID;
-- busca por documento;
+- busca;
 - atualização;
 - desativação;
 - reativação.
 
-A exclusão utiliza o conceito de **exclusão lógica**, preservando o registro no banco.
+A exclusão utiliza o conceito de **exclusão lógica**, permitindo preservar o histórico do registro.
 
 ---
 
-## Usuário
+# Usuário
 
 Um `Usuario` é associado a uma `Pessoa` e representa alguém que pode possuir acesso ao sistema.
 
-Atualmente existem os perfis:
+Perfis atualmente modelados:
 
 ```text
 ADMINISTRADOR
@@ -189,188 +241,253 @@ PORTEIRO
 PROPRIETARIO
 ```
 
-Funcionalidades implementadas:
+Entre as funcionalidades implementadas estão:
 
 - cadastro;
 - associação com Pessoa;
-- validação de e-mail duplicado;
-- listagem de usuários ativos;
-- busca por UUID;
-- atualização de e-mail;
-- atualização de perfil;
+- validação de e-mail;
+- listagem;
+- atualização;
 - desativação;
 - reativação;
-- alteração de senha;
-- validação da senha atual.
-
----
-
-# Segurança das senhas
-
-O CondoSys não armazena senhas em texto puro.
-
-As senhas são processadas utilizando:
-
-```text
-Spring Security Crypto
-        ↓
-BCryptPasswordEncoder
-        ↓
-Hash BCrypt
-        ↓
-PostgreSQL
-```
-
-Exemplo conceitual:
-
-```text
-Senha digitada
-     ↓
-BCrypt
-     ↓
-$2a$10$...
-```
-
-Ao alterar uma senha, o sistema utiliza:
-
-```java
-passwordEncoder.matches(...)
-```
-
-para comparar a senha informada com o hash armazenado.
-
----
-
-## Importante sobre segurança
-
-A proteção de senha com BCrypt já está implementada.
-
-Entretanto, a API ainda está em desenvolvimento e **não possui autenticação e autorização completas nas rotas**.
-
-Antes de qualquer implantação em ambiente público ainda deverão ser implementados:
-
-- autenticação;
-- autorização por perfil;
-- proteção dos endpoints administrativos;
-- políticas de acesso;
-- configuração de CORS;
-- gerenciamento seguro de credenciais;
-- revisão das regras de alteração de perfil.
-
-Por esse motivo, a aplicação deve permanecer apenas em ambiente de desenvolvimento.
+- alteração de senha.
 
 ---
 
 # Administrador
 
-O módulo `Administrador` utiliza uma relação de chave compartilhada com `Usuario`.
+O módulo Administrador utiliza uma relação de chave compartilhada com `Usuario`.
 
 ```text
 Usuario
    │
-   │ mesmo UUID
    ▼
 Administrador
 ```
 
-O relacionamento utiliza:
+Entre as regras implementadas estão:
 
-```java
-@OneToOne
-@MapsId
-```
-
-Entre as regras de negócio desenvolvidas estão:
-
-- usuário precisa existir;
-- usuário precisa possuir perfil `ADMINISTRADOR`;
-- usuário precisa estar ativo;
-- um mesmo usuário não pode possuir dois cadastros de administrador;
-- data de contratação não pode ser futura.
-
----
-
-# Testes automatizados
-
-O projeto utiliza:
-
-- JUnit 5;
-- Mockito.
-
-Os testes do `AdministradorService` validam diferentes cenários de negócio.
-
-Atualmente são verificados casos como:
-
-```text
-✔ impedir perfil incorreto
-✔ permitir administrador válido
-✔ impedir cadastro duplicado
-✔ impedir usuário inativo
-✔ impedir data de contratação futura
-```
-
-Os testes utilizam mocks para testar a camada de serviço sem necessidade de acessar o PostgreSQL.
-
-Exemplo da arquitetura de teste:
-
-```text
-AdministradorServiceTest
-         ↓
-AdministradorService
-      ↙       ↘
-   Mock       Mock
-Repository  UsuarioService
-```
+- validação do perfil;
+- validação de usuário ativo;
+- prevenção de cadastro duplicado;
+- validação da data de contratação.
 
 ---
 
 # Porteiro
 
-O módulo `Porteiro` está em desenvolvimento.
+O módulo Porteiro está implementado no backend.
 
-A entidade possui informações específicas do vínculo operacional, como:
+O cadastro possui informações específicas do vínculo operacional, incluindo turno e dados relacionados ao vínculo do funcionário.
+
+O porteiro participa diretamente dos fluxos operacionais de controle de acesso e encomendas.
+
+---
+
+# Proprietário e unidades
+
+O sistema possui cadastro de proprietários e unidades condominiais.
+
+As unidades são vinculadas aos seus respectivos proprietários e utilizadas por outros módulos do sistema, como:
+
+- autorizações;
+- controle de acesso;
+- encomendas;
+- reservas.
+
+Para os dados de demonstração são utilizadas identificações genéricas como:
 
 ```text
-usuario_id
-turno
-data_demissao
+TORRE A
+TORRE B
 ```
 
-O registro compartilha o UUID com `Usuario`.
+---
+
+# Visitantes
+
+O módulo de visitantes está integrado entre frontend e backend.
+
+Permite:
+
+- cadastrar visitantes;
+- listar visitantes;
+- consultar dados;
+- alterar informações;
+- pesquisar visitantes durante o atendimento da portaria.
+
+O cadastro de visitante utiliza a entidade `Pessoa` como base.
+
+---
+
+# Autorizações
+
+O CondoSys possui um módulo de autorização de acesso.
+
+Tipos atualmente modelados:
 
 ```text
-Usuario
-   │
-   ▼
-Porteiro
+UNICA_ENTRADA
+PRAZO_DETERMINADO
+PRAZO_INDETERMINADO
 ```
 
-A data de demissão permanece nula enquanto o porteiro possuir vínculo ativo.
+Status possíveis:
 
-Entre as regras previstas estão:
+```text
+ATIVA
+EXPIRADA
+REVOGADA
+UTILIZADA
+```
 
-- usuário precisa possuir perfil `PORTEIRO`;
-- validação do turno;
-- alteração de turno;
-- registro de demissão;
-- impedir datas futuras;
-- impedir registro duplicado de demissão.
+Uma autorização relaciona:
+
+```text
+Pessoa
+   ↓
+Proprietário
+   ↓
+Unidade
+   ↓
+Autorização
+```
+
+Autorizações de entrada única são marcadas como `UTILIZADA` após a primeira entrada autorizada.
+
+---
+
+# Controle de acesso
+
+O módulo registra movimentações de entrada e saída.
+
+O fluxo principal implementado pode ser representado por:
+
+```text
+Visitante
+   ↓
+Autorização
+   ↓
+Validação
+   ↓
+Entrada
+   ↓
+Registro de acesso
+   ↓
+Autorização de entrada única = UTILIZADA
+   ↓
+Saída
+   ↓
+Histórico
+```
+
+O backend impede uma entrada autorizada sem uma autorização válida, exceto nos fluxos explicitamente tratados como liberação manual.
+
+A saída pode ser registrada mesmo após uma autorização de entrada única já ter sido utilizada.
+
+Esse fluxo foi validado durante os testes funcionais do sistema.
+
+---
+
+# Encomendas
+
+O módulo de encomendas está integrado entre frontend e backend.
+
+O fluxo operacional implementado permite acompanhar a encomenda através dos estados:
+
+```text
+RECEBIDA
+    ↓
+AGUARDANDO_RETIRADA
+    ↓
+ENTREGUE
+```
+
+O sistema relaciona a encomenda à unidade e registra sua evolução operacional.
+
+---
+
+# Frontend
+
+A interface web está sendo construída com React, TypeScript e Vite.
+
+Entre as telas atualmente disponíveis estão:
+
+- Login;
+- Dashboard;
+- Visitantes;
+- Autorizações;
+- Controle de Acesso;
+- Encomendas.
+
+O frontend se comunica com a API Spring Boot através de requisições HTTP.
+
+A configuração de CORS permite a comunicação entre o ambiente local do Vite e o backend durante o desenvolvimento.
+
+---
+
+# Dashboard
+
+O Dashboard apresenta a estrutura visual planejada para indicadores e informações resumidas do condomínio.
+
+Neste estágio do projeto, parte dos dados apresentados no Dashboard ainda utiliza informações demonstrativas.
+
+A integração desses indicadores com dados reais da API permanece como evolução futura.
+
+---
+
+# Login e segurança
+
+O sistema já utiliza BCrypt para processamento das senhas armazenadas.
+
+```text
+Senha
+  ↓
+BCrypt
+  ↓
+Hash
+  ↓
+PostgreSQL
+```
+
+Entretanto, a autenticação apresentada atualmente no frontend é **simulada para fins acadêmicos e de demonstração**.
+
+O sistema ainda não utiliza um mecanismo completo de autenticação e autorização de rotas, como JWT ou sessões autenticadas.
+
+Antes de qualquer utilização em ambiente de produção ainda seriam necessárias medidas como:
+
+- autenticação real;
+- autorização baseada em perfil;
+- proteção completa dos endpoints;
+- gerenciamento seguro de sessão ou tokens;
+- auditoria ampliada;
+- políticas de segurança;
+- testes adicionais;
+- revisão de credenciais e infraestrutura.
+
+---
+
+# Tratamento de erros
+
+A API possui tratamento centralizado de exceções através do `GlobalExceptionHandler`.
+
+São tratados cenários como:
+
+- registros não encontrados;
+- documentos ou e-mails duplicados;
+- regras de negócio inválidas;
+- dados de entrada inválidos;
+- operações incompatíveis com o estado atual do registro.
+
+Isso permite que o frontend receba respostas HTTP mais adequadas em situações de erro.
 
 ---
 
 # Banco de dados
 
-O projeto utiliza:
+O projeto utiliza PostgreSQL 16.
 
-```text
-PostgreSQL 16
-```
-
-executado localmente através de Docker.
-
-O banco possui migrations controladas pelo Flyway.
-
-A modelagem contempla módulos como:
+O banco contempla tabelas relacionadas a:
 
 ```text
 pessoas
@@ -389,22 +506,23 @@ encomendas
 auditoria_eventos
 ```
 
-Novas alterações no banco devem ser realizadas através de novas migrations.
+As alterações de estrutura são controladas pelo Flyway.
 
-Migrations já executadas **não devem ser alteradas**, pois o Flyway utiliza checksum para garantir a integridade do histórico.
+Migrations já executadas não devem ser modificadas, pois o Flyway utiliza checksum para garantir a integridade do histórico.
 
 ---
 
 # Docker
 
-O PostgreSQL é executado através do Docker Compose.
+O PostgreSQL é executado localmente através do Docker.
 
-A configuração atual utiliza:
+Configuração atual:
 
 ```text
 PostgreSQL 16
 porta local: 5434
 porta container: 5432
+container: condosys-postgres
 ```
 
 Para iniciar:
@@ -413,39 +531,30 @@ Para iniciar:
 docker compose up -d
 ```
 
-Para verificar o banco:
+Para verificar:
 
 ```bash
 docker exec condosys-postgres \
   pg_isready -U condosys -d condosys_db
 ```
 
-Para acessar o PostgreSQL:
-
-```bash
-docker exec -it condosys-postgres \
-  psql -U condosys -d condosys_db
-```
-
-Para sair:
-
-```sql
-\q
-```
-
 ---
 
 # Configuração do ambiente
 
-O projeto utiliza variáveis de ambiente para informações sensíveis.
+O projeto utiliza variáveis de ambiente para dados de configuração.
 
-Existe um arquivo:
+Existe um arquivo de exemplo:
 
 ```text
 .env.example
 ```
 
-que serve apenas como modelo.
+Para criar o arquivo local:
+
+```bash
+cp .env.example .env
+```
 
 Exemplo:
 
@@ -455,75 +564,41 @@ DB_USER=condosys
 DB_PASSWORD=troque_por_uma_senha_segura
 ```
 
-Crie o arquivo local:
-
-```bash
-cp .env.example .env
-```
-
-Depois configure uma senha própria.
-
-O arquivo:
-
-```text
-.env
-```
-
-está incluído no `.gitignore` e **não deve ser enviado ao GitHub**.
+O arquivo `.env` contém dados locais e não deve ser versionado.
 
 ---
 
-# Executando o projeto
+# Executando o backend
 
 ## Pré-requisitos
-
-Para executar localmente:
 
 ```text
 Java 21
 Docker
 Docker Compose
 Git
-Maven Wrapper
 ```
 
----
-
-## 1. Clonar o projeto
+Clone o projeto:
 
 ```bash
 git clone git@github.com:armandor123/CondoSys-2.0.git
-```
-
-Entre na pasta:
-
-```bash
 cd CondoSys-2.0
 ```
 
----
-
-## 2. Criar o ambiente local
+Crie o ambiente:
 
 ```bash
 cp .env.example .env
 ```
 
-Configure os dados locais do PostgreSQL no `.env`.
-
----
-
-## 3. Iniciar o banco
+Inicie o PostgreSQL:
 
 ```bash
 docker compose up -d
 ```
 
----
-
-## 4. Carregar as variáveis
-
-Em Linux:
+Carregue as variáveis no Linux:
 
 ```bash
 set -a
@@ -531,15 +606,13 @@ source .env
 set +a
 ```
 
----
-
-## 5. Executar a aplicação
+Execute o backend:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Por padrão, a aplicação é disponibilizada em:
+A API será disponibilizada em:
 
 ```text
 http://localhost:8080
@@ -547,111 +620,136 @@ http://localhost:8080
 
 ---
 
+# Executando o frontend
+
+Entre no diretório:
+
+```bash
+cd frontend
+```
+
+Instale as dependências quando necessário:
+
+```bash
+npm install
+```
+
+Execute:
+
+```bash
+npm run dev
+```
+
+Por padrão, o ambiente local do frontend utiliza:
+
+```text
+http://localhost:5173
+```
+
+---
+
 # Testes
 
-Para executar toda a suíte:
+Para executar os testes do backend:
 
 ```bash
 ./mvnw test
 ```
 
-Os testes também podem ser executados diretamente pela IDE.
+A suíte atual possui testes unitários das regras do módulo Administrador e teste de carregamento do contexto Spring.
 
----
+Além dos testes automatizados, foram realizados testes funcionais dos principais fluxos integrados.
 
-# Exemplos de endpoints
-
-## Pessoas
-
-```http
-GET /pessoas
-GET /pessoas/{id}
-GET /pessoas/documento/{documento}
-POST /pessoas
-PUT /pessoas/{id}
-PUT /pessoas/{id}/reativar
-DELETE /pessoas/{id}
-```
-
-## Usuários
-
-```http
-GET /usuarios
-GET /usuarios/{id}
-POST /usuarios
-PUT /usuarios/{id}
-PUT /usuarios/{id}/reativar
-PUT /usuarios/{id}/senha
-DELETE /usuarios/{id}
-```
-
-Os endpoints poderão sofrer alterações conforme a evolução da API.
-
----
-
-# Próximas etapas
-
-O desenvolvimento está sendo realizado de forma incremental.
-
-Entre as próximas etapas estão:
-
-- concluir módulo Porteiro;
-- desenvolver módulo Proprietário;
-- ampliar testes automatizados;
-- implementar autenticação;
-- implementar autorização por perfil;
-- controle de visitantes;
-- cadastro de prestadores;
-- controle de autorizações;
-- registros de entrada e saída;
-- gestão de encomendas;
-- reservas de áreas comuns;
-- auditoria de eventos;
-- documentação da API;
-- integração com interfaces web e desktop.
-
----
-
-# Status
+Entre os fluxos já validados estão:
 
 ```text
-Pessoa                  ✔ Implementado
-Usuario                 ✔ Implementado
-BCrypt                  ✔ Implementado
-PostgreSQL              ✔ Configurado
-Flyway                  ✔ Configurado
-Docker                  ✔ Configurado
-Administrador           ◐ Em desenvolvimento
-Testes Administrador    ✔ Implementados
-Porteiro                ◐ Em desenvolvimento
-Proprietario            ○ Planejado
-Autenticação            ○ Planejada
-Autorização             ○ Planejada
-Frontend Web            ○ Planejado
+Visitante → Cadastro → Consulta
+
+Encomenda
+RECEBIDA → AGUARDANDO_RETIRADA → ENTREGUE
+
+Autorização
+ATIVA → Entrada → UTILIZADA
+
+Controle de acesso
+Entrada → Saída → Histórico
+```
+
+---
+
+# Status atual
+
+```text
+Backend Spring Boot            ✔ Implementado
+Frontend React                 ✔ Implementado
+PostgreSQL                     ✔ Configurado
+Flyway                         ✔ Configurado
+Docker                         ✔ Configurado
+Pessoa                         ✔ Implementado
+Usuário                        ✔ Implementado
+Administrador                  ✔ Implementado
+Porteiro                       ✔ Implementado
+Proprietário                   ✔ Implementado
+Unidade                        ✔ Implementado
+Visitante                      ✔ Implementado
+Encomenda                      ✔ Implementado
+Autorização                    ✔ Implementado
+Controle de Acesso             ✔ Implementado
+Áreas Comuns                   ✔ Backend implementado
+Reservas                       ✔ Backend implementado
+Dashboard                      ◐ Integração parcial
+Login                          ◐ Simulado para o MVP
+Prestadores                    ◐ Estrutura em evolução
+Autenticação real              ○ Planejada
+Autorização por perfil         ○ Planejada
+Auditoria avançada             ○ Planejada
 ```
 
 Legenda:
 
 ```text
-✔ concluído
-◐ em desenvolvimento
+✔ implementado
+◐ parcialmente implementado
 ○ planejado
 ```
 
 ---
 
+# Próximas etapas
+
+O desenvolvimento seguirá de forma incremental.
+
+Entre as melhorias futuras estão:
+
+- autenticação real;
+- autorização baseada em perfis;
+- ampliação dos testes automatizados;
+- integração completa dos indicadores do Dashboard;
+- evolução do módulo de prestadores;
+- integração completa de áreas comuns e reservas com o frontend;
+- expansão da auditoria;
+- documentação da API;
+- aperfeiçoamento das regras de autorização;
+- melhorias de segurança;
+- preparação para implantação.
+
+---
+
 # Finalidade acadêmica
 
-O CondoSys 2.0 é um projeto acadêmico utilizado para aplicação prática de conceitos relacionados a:
+O CondoSys 2.0 é desenvolvido como Projeto Integrador e permite aplicar, em um sistema único, conhecimentos relacionados a:
 
 - Programação Orientada a Objetos;
 - Engenharia de Software;
 - Banco de Dados;
 - APIs REST;
 - arquitetura em camadas;
+- desenvolvimento web;
+- persistência de dados;
+- modelagem de sistemas;
 - testes automatizados;
-- versionamento;
-- segurança;
+- controle de versão;
+- segurança de software;
 - desenvolvimento colaborativo.
 
-A arquitetura e as funcionalidades continuarão evoluindo durante o desenvolvimento do projeto.
+O projeto demonstra a evolução de uma aplicação desktop inicial para uma arquitetura web dividida entre frontend, backend e banco de dados, mantendo o desenvolvimento orientado às necessidades encontradas na gestão condominial.
