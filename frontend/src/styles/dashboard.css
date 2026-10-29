@@ -1,0 +1,344 @@
+/* ========================================
+   CONTEÚDO DO DASHBOARD
+======================================== */
+
+.dashboard-content {
+    padding: 30px;
+}
+
+
+.dashboard-title {
+    margin-bottom: 25px;
+}
+
+
+.dashboard-title h1 {
+    font-size: 34px;
+    line-height: 1.1;
+
+    color: #102d60;
+}
+
+
+.dashboard-title p {
+    margin-top: 7px;
+
+    color: #71809b;
+
+    font-size: 17px;
+}
+
+
+/* ========================================
+   INDICADORES
+======================================== */
+
+.dashboard-cards {
+    display: grid;
+
+    grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 24px;
+}
+
+
+.dashboard-card {
+    min-height: 135px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 20px 16px;
+
+    border: 1px solid #dce5f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.card-icon {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+}
+
+
+.card-icon.blue {
+    background: #e2f1ff;
+    color: #0878e8;
+}
+
+
+.card-icon.green {
+    background: #ddf7ed;
+    color: #11a977;
+}
+
+
+.card-icon.orange {
+    background: #fff1d7;
+    color: #f39b00;
+}
+
+
+.card-icon.red {
+    background: #ffe2e5;
+    color: #ef233c;
+}
+
+
+.card-icon.yellow {
+    background: #fff2d6;
+    color: #e9a300;
+}
+
+
+.card-information {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.card-information span {
+    min-height: 42px;
+
+    color: #15366d;
+
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+
+.card-information strong {
+    color: #064daf;
+
+    font-size: 31px;
+}
+
+
+/* ========================================
+   PAINÉIS
+======================================== */
+
+.dashboard-panels {
+    display: grid;
+
+    grid-template-columns:
+    1.35fr 1fr 1fr;
+
+    gap: 16px;
+}
+
+
+.dashboard-panel {
+    overflow: hidden;
+
+    min-width: 0;
+
+    border: 1px solid #dce5f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.panel-header {
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #e5ebf3;
+
+    background: #f8fbff;
+}
+
+
+.panel-header h2 {
+    font-size: 19px;
+}
+
+
+.panel-header button {
+    border: none;
+    background: transparent;
+
+    color: #0878e8;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   TABELAS
+======================================== */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.dashboard-panel table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.dashboard-panel th,
+.dashboard-panel td {
+    padding: 15px 18px;
+
+    border-bottom: 1px solid #e9eef5;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+
+.dashboard-panel th {
+    color: #12366e;
+
+    font-size: 14px;
+}
+
+
+.dashboard-panel td {
+    color: #274873;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   COMUNICADOS
+======================================== */
+
+.notice-list {
+    padding: 0 20px;
+}
+
+
+.notice-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #e5ebf3;
+}
+
+
+.notice-item:last-child {
+    border-bottom: none;
+}
+
+
+.notice-item svg {
+    min-width: 20px;
+
+    color: #0878e8;
+}
+
+
+.notice-item div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.notice-item strong {
+    color: #17396d;
+
+    font-size: 14px;
+}
+
+
+.notice-item span {
+    color: #8190a8;
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 1350px) {
+
+    .dashboard-cards {
+        grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+    }
+
+
+    .dashboard-panels {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .notices-panel {
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .dashboard-panels {
+        grid-template-columns: 1fr;
+    }
+
+
+    .notices-panel {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .dashboard-content {
+        padding: 22px 15px;
+    }
+
+
+    .dashboard-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}

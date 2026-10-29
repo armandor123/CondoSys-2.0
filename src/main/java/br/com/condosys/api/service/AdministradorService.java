@@ -4,6 +4,9 @@ import br.com.condosys.api.domain.enums.PerfilUsuario;
 import br.com.condosys.api.domain.model.Administrador;
 import br.com.condosys.api.domain.model.Usuario;
 import br.com.condosys.api.repository.AdministradorRepository;
+import br.com.condosys.api.exception.AdministradorNaoEncontradoException;
+import java.util.List;
+
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,5 +76,24 @@ public class AdministradorService {
         );
 
         return administradorRepository.save(administrador);
+    }
+
+    // Lista todos os administradores cadastrados.
+    @Transactional(readOnly = true)
+    public List<Administrador> listarTodos() {
+
+        return administradorRepository.findAll();
+    }
+
+
+    // Busca um administrador pelo UUID do usuário.
+    @Transactional(readOnly = true)
+    public Administrador buscarPorId(UUID usuarioId) {
+
+        return administradorRepository
+                .findById(usuarioId)
+                .orElseThrow(
+                        AdministradorNaoEncontradoException::new
+                );
     }
 }

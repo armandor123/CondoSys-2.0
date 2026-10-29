@@ -1,0 +1,774 @@
+.encomendas-page {
+    padding: 28px 30px 40px;
+
+    background: #f8fafc;
+}
+
+
+/* Cabeçalho */
+
+.encomendas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.encomendas-header h1 {
+    margin: 0;
+
+    color: #102d60;
+
+    font-size: 32px;
+}
+
+
+.encomendas-header p {
+    margin: 7px 0 0;
+
+    color: #71809b;
+}
+
+
+.encomendas-new-button {
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0877e8;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* Mensagens */
+
+.encomendas-message {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 16px;
+    padding: 13px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.encomendas-message.success {
+    border: 1px solid #bce8d4;
+
+    background: #edfaf4;
+
+    color: #087b56;
+}
+
+
+.encomendas-message.error {
+    border: 1px solid #efbec4;
+
+    background: #fff0f2;
+
+    color: #c72f3b;
+}
+
+
+/* KPIs */
+
+.encomendas-kpis {
+    display: grid;
+
+    grid-template-columns:
+    repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.encomendas-kpis article {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px;
+
+    border: 1px solid #dce5ef;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.encomenda-kpi-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+}
+
+
+.encomenda-kpi-icon.recebida {
+    background: #e3f0ff;
+
+    color: #0877e8;
+}
+
+
+.encomenda-kpi-icon.aguardando {
+    background: #fff2d8;
+
+    color: #ca8100;
+}
+
+
+.encomenda-kpi-icon.entregue {
+    background: #dcf7e9;
+
+    color: #079b66;
+}
+
+
+.encomendas-kpis article > div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.encomendas-kpis span {
+    color: #78899f;
+
+    font-size: 12px;
+}
+
+
+.encomendas-kpis strong {
+    margin-top: 2px;
+
+    color: #15366d;
+
+    font-size: 24px;
+}
+
+
+/* Toolbar */
+
+.encomendas-toolbar {
+    display: grid;
+
+    grid-template-columns:
+    1fr
+    210px
+    125px;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+.encomendas-search {
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 15px;
+
+    border: 1px solid #ccd7e4;
+    border-radius: 8px;
+
+    background: #ffffff;
+}
+
+
+.encomendas-search input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    color: #17396d;
+
+    font-size: 14px;
+}
+
+
+.encomendas-search svg {
+    color: #7287a3;
+}
+
+
+.encomendas-toolbar > select {
+    padding: 0 12px;
+
+    border: 1px solid #ccd7e4;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #526b85;
+}
+
+
+.encomendas-refresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #b7c8dc;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #1764b5;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* Card */
+
+.encomendas-card {
+    overflow: hidden;
+
+    border: 1px solid #dbe5f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.encomendas-card-header {
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #e6edf4;
+
+    background: #fbfcfe;
+}
+
+
+.encomendas-card-header h2 {
+    margin: 0;
+
+    color: #15366d;
+
+    font-size: 18px;
+}
+
+
+.encomendas-card-header span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #8492a6;
+
+    font-size: 12px;
+}
+
+
+/* Tabela */
+
+.encomendas-table-wrapper {
+    overflow-x: auto;
+}
+
+
+.encomendas-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.encomendas-table th {
+    padding: 13px 14px;
+
+    border-bottom: 1px solid #e7edf4;
+
+    background: #f7f9fc;
+
+    color: #6d7f97;
+
+    text-align: left;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.encomendas-table td {
+    padding: 14px;
+
+    border-bottom: 1px solid #edf1f5;
+
+    color: #4b627b;
+
+    font-size: 13px;
+}
+
+
+.encomendas-table tbody tr:hover {
+    background: #fafcff;
+}
+
+
+.encomenda-person {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.encomenda-person svg {
+    color: #0877e8;
+}
+
+
+.encomenda-person strong,
+.encomenda-unidade {
+    color: #17396d;
+}
+
+
+/* Status */
+
+.encomenda-status {
+    display: inline-flex;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.encomenda-status.recebida {
+    background: #e3f0ff;
+
+    color: #0877e8;
+}
+
+
+.encomenda-status.aguardando_retirada {
+    background: #fff2d8;
+
+    color: #b97500;
+}
+
+
+.encomenda-status.entregue {
+    background: #dcf7e9;
+
+    color: #07875a;
+}
+
+
+/* Ações */
+
+.encomenda-actions {
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.encomenda-action {
+    min-height: 34px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 0 10px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.encomenda-action.waiting {
+    border: 1px solid #e4bc65;
+
+    background: #fffaf0;
+
+    color: #a96c00;
+}
+
+
+.encomenda-action.deliver {
+    border: none;
+
+    background: #0877e8;
+
+    color: #ffffff;
+}
+
+
+.encomenda-delivered {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: #07875a;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* Vazio */
+
+.encomendas-empty {
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #8493a7;
+
+    text-align: center;
+}
+
+
+.encomendas-empty svg {
+    color: #0877e8;
+}
+
+
+.encomendas-empty strong {
+    color: #17396d;
+}
+
+
+/* Modal */
+
+.encomenda-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+            rgba(4, 26, 49, 0.58);
+}
+
+
+.encomenda-modal {
+    width: min(680px, 100%);
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+            0 20px 60px
+            rgba(0, 28, 61, 0.25);
+}
+
+
+.encomenda-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e2e9f1;
+}
+
+
+.encomenda-modal-header h2 {
+    margin: 0;
+
+    color: #15366d;
+}
+
+
+.encomenda-modal-header p {
+    margin: 4px 0 0;
+
+    color: #8190a5;
+
+    font-size: 13px;
+}
+
+
+.encomenda-modal-header > button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #f0f4f8;
+
+    color: #526b87;
+
+    cursor: pointer;
+}
+
+
+/* Formulário */
+
+.encomenda-form {
+    display: grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap: 16px;
+
+    padding: 22px;
+}
+
+
+.encomenda-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.encomenda-field.full,
+.encomenda-warning.full {
+    grid-column: 1 / -1;
+}
+
+
+.encomenda-field label {
+    color: #435a73;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.encomenda-field input,
+.encomenda-field select,
+.encomenda-field textarea {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #ccd7e4;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #17396d;
+
+    font: inherit;
+}
+
+
+.encomenda-field textarea {
+    resize: vertical;
+}
+
+
+.encomenda-field input:focus,
+.encomenda-field select:focus,
+.encomenda-field textarea:focus {
+    border-color: #0877e8;
+
+    box-shadow:
+            0 0 0 3px
+            rgba(8, 119, 232, 0.10);
+}
+
+
+.encomenda-warning {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    border: 1px solid #edc87d;
+    border-radius: 8px;
+
+    background: #fff8e8;
+
+    color: #a26a00;
+
+    font-size: 13px;
+}
+
+
+.encomenda-form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-top: 8px;
+}
+
+
+.encomenda-cancel-button,
+.encomenda-save-button {
+    min-height: 44px;
+
+    padding: 0 17px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.encomenda-cancel-button {
+    border: 1px solid #bdcbd9;
+
+    background: #ffffff;
+
+    color: #536b85;
+}
+
+
+.encomenda-save-button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border: none;
+
+    background: #0877e8;
+
+    color: #ffffff;
+}
+
+
+.encomenda-save-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.5;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+
+    .encomendas-kpis {
+        grid-template-columns: 1fr;
+    }
+
+
+    .encomendas-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+
+    .encomendas-refresh {
+        min-height: 46px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .encomendas-page {
+        padding: 22px 15px;
+    }
+
+
+    .encomendas-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .encomendas-new-button {
+        width: 100%;
+    }
+
+
+    .encomenda-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .encomenda-field.full,
+    .encomenda-warning.full,
+    .encomenda-form-actions {
+        grid-column: auto;
+    }
+
+
+    .encomenda-form-actions {
+        flex-direction: column-reverse;
+    }
+}

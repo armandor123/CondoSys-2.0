@@ -118,4 +118,133 @@ public class GlobalExceptionHandler {
                         "erro", exception.getMessage()
                 ));
     }
+
+    // Administrador não encontrado -> HTTP 404.
+    @ExceptionHandler(AdministradorNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> tratarAdministradorNaoEncontrado(
+            AdministradorNaoEncontradoException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Porteiro não encontrado -> HTTP 404.
+    @ExceptionHandler(PorteiroNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> tratarPorteiroNaoEncontrado(
+            PorteiroNaoEncontradoException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+    // Proprietário não encontrado -> HTTP 404.
+    @ExceptionHandler(ProprietarioNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> tratarProprietarioNaoEncontrado(
+            ProprietarioNaoEncontradoException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+    // Unidade não encontrada -> HTTP 404.
+    @ExceptionHandler(UnidadeNaoEncontradaException.class)
+    public ResponseEntity<Map<String, String>> tratarUnidadeNaoEncontrada(
+            UnidadeNaoEncontradaException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Visitante não encontrado -> HTTP 404.
+    @ExceptionHandler(VisitanteNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> tratarVisitanteNaoEncontrado(
+            VisitanteNaoEncontradoException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Autorização não encontrada -> HTTP 404.
+    @ExceptionHandler(AutorizacaoNaoEncontradaException.class)
+    public ResponseEntity<Map<String, String>> tratarAutorizacaoNaoEncontrada(
+            AutorizacaoNaoEncontradaException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Registro de acesso não encontrado -> HTTP 404.
+    @ExceptionHandler(RegistroAcessoNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> tratarRegistroAcessoNaoEncontrado(
+            RegistroAcessoNaoEncontradoException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Encomenda não encontrada -> HTTP 404.
+    @ExceptionHandler(EncomendaNaoEncontradaException.class)
+    public ResponseEntity<Map<String, String>> tratarEncomendaNaoEncontrada(
+            EncomendaNaoEncontradaException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+    // Área comum não encontrada -> HTTP 404.
+    @ExceptionHandler(AreaComumNaoEncontradaException.class)
+    public ResponseEntity<Map<String, String>> tratarAreaComumNaoEncontrada(
+            AreaComumNaoEncontradaException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
+
+
+    // Reserva não encontrada -> HTTP 404.
+    @ExceptionHandler(ReservaNaoEncontradaException.class)
+    public ResponseEntity<Map<String, String>> tratarReservaNaoEncontrada(
+            ReservaNaoEncontradaException exception
+    ) {
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "erro", exception.getMessage()
+                ));
+    }
 }

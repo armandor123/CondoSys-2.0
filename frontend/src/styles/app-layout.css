@@ -1,0 +1,293 @@
+/* ========================================
+   ESTRUTURA PRINCIPAL DO SISTEMA
+======================================== */
+
+.app-layout {
+    width: 100%;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 290px 1fr;
+
+    background: #f8fafc;
+    color: #102d60;
+}
+
+
+/* ========================================
+   MENU LATERAL
+======================================== */
+
+.app-sidebar {
+    min-height: 100vh;
+
+    background:
+            linear-gradient(
+                    180deg,
+                    #073c72,
+                    #052f5b
+            );
+
+    color: #ffffff;
+
+    padding: 28px 16px;
+}
+
+
+/* Nome do sistema */
+.app-sidebar-logo {
+    padding: 0 16px 30px;
+
+    font-size: 27px;
+    font-weight: 800;
+}
+
+
+/* Lista do menu */
+.app-sidebar-menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* Item do menu */
+.app-sidebar-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 17px;
+
+    border-radius: 9px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition:
+            background 0.2s,
+            color 0.2s;
+}
+
+
+/* Mouse sobre o item */
+.app-sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #ffffff;
+}
+
+
+/* Página atualmente selecionada */
+.app-sidebar-item.active {
+    background:
+            linear-gradient(
+                    90deg,
+                    #0877e8,
+                    #1189f7
+            );
+
+    color: #ffffff;
+
+    box-shadow:
+            0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ========================================
+   ÁREA PRINCIPAL
+======================================== */
+
+.app-main {
+    min-width: 0;
+}
+
+
+/* ========================================
+   BARRA SUPERIOR
+======================================== */
+
+.app-header {
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background:
+            linear-gradient(
+                    90deg,
+                    #075aa6,
+                    #076ebc
+            );
+
+    color: #ffffff;
+}
+
+
+/* Botão do menu */
+.app-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+
+    border: none;
+    background: transparent;
+
+    color: #ffffff;
+}
+
+
+/* Lado direito do header */
+.app-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 26px;
+}
+
+
+/* Notificação */
+.app-notification-button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+
+    border: none;
+    background: transparent;
+
+    color: #ffffff;
+}
+
+
+/* Bolinha vermelha */
+.app-notification-dot {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ff2e3d;
+}
+
+
+/* Usuário conectado */
+.app-user-area {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+/* Nome e perfil */
+.app-user-info {
+    min-width: 115px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.app-user-info strong {
+    font-size: 15px;
+}
+
+
+.app-user-info span {
+    margin-top: 2px;
+
+    font-size: 13px;
+
+    opacity: 0.88;
+}
+
+
+/* ========================================
+   CONTEÚDO DAS PÁGINAS
+======================================== */
+
+.app-page-content {
+    min-width: 0;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .app-layout {
+        grid-template-columns: 86px 1fr;
+    }
+
+
+    .app-sidebar-logo {
+        font-size: 0;
+
+        text-align: center;
+    }
+
+
+    .app-sidebar-logo::after {
+        content: "CS";
+
+        font-size: 22px;
+    }
+
+
+    .app-sidebar-item {
+        justify-content: center;
+    }
+
+
+    .app-sidebar-item span {
+        display: none;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .app-layout {
+        display: block;
+    }
+
+
+    .app-sidebar {
+        display: none;
+    }
+
+
+    .app-header {
+        height: 68px;
+
+        padding: 0 18px;
+    }
+
+
+    .app-user-info {
+        display: none;
+    }
+}
