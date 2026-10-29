@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { useNavigate } from 'react-router'
 import {
     Eye,
     EyeOff,
@@ -17,7 +16,7 @@ export function LoginPage() {
     const [senha, setSenha] = useState('')
     const [mostrarSenha, setMostrarSenha] = useState(false)
     const [erro, setErro] = useState('')
-    const navigate = useNavigate()
+
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -30,10 +29,7 @@ export function LoginPage() {
             senha === '123456'
         ) {
 
-            navigate(
-                '/dashboard',
-                { replace: true }
-            )
+            window.location.replace('/dashboard')
 
             return
         }

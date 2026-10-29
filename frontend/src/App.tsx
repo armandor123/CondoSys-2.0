@@ -38,6 +38,7 @@ function App() {
     return (
         <Routes>
 
+            {/* Login */}
             <Route
                 path="/"
                 element={
@@ -46,6 +47,7 @@ function App() {
             />
 
 
+            {/* Área interna do sistema */}
             <Route
                 element={
                     <AppLayout />
@@ -53,47 +55,44 @@ function App() {
             >
 
                 <Route
-                    path="/dashboard"
+                    path="dashboard"
                     element={
                         <DashboardPage />
                     }
                 />
 
-
                 <Route
-                    path="/visitantes"
+                    path="visitantes"
                     element={
                         <VisitantesPage />
                     }
                 />
 
-
                 <Route
-                    path="/controle-acesso"
+                    path="controle-acesso"
                     element={
                         <ControleAcessoPage />
                     }
                 />
 
-
                 <Route
-                    path="/encomendas"
+                    path="autorizacoes"
                     element={
-                        <EncomendasPage />
+                        <AutorizacoesPage />
                     }
                 />
 
-
                 <Route
-                    path="/autorizacoes"
+                    path="encomendas"
                     element={
-                        <AutorizacoesPage />
+                        <EncomendasPage />
                     }
                 />
 
             </Route>
 
 
+            {/* Rota inexistente */}
             <Route
                 path="*"
                 element={

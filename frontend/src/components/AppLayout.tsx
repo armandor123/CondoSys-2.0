@@ -2,27 +2,26 @@ import {
     Bell,
     ChevronDown,
     ClipboardCheck,
-    Clock3,
-    HardHat,
     Home,
     Menu,
     Package,
-    Settings,
     ShieldCheck,
     UserCircle,
-    UserCog,
     Users
 } from 'lucide-react'
 
 import {
-    NavLink,
-    Outlet
+    Outlet,
+    useLocation
 } from 'react-router'
 
 import '../styles/app-layout.css'
 
 
 export function AppLayout() {
+
+    const location = useLocation()
+
 
     const menuItems = [
         {
@@ -36,19 +35,9 @@ export function AppLayout() {
             icon: Users
         },
         {
-            nome: 'Prestadores',
-            caminho: '/prestadores',
-            icon: HardHat
-        },
-        {
             nome: 'Controle de Acesso',
             caminho: '/controle-acesso',
             icon: ShieldCheck
-        },
-        {
-            nome: 'Registro de Entrada e Saída',
-            caminho: '/registros-acesso',
-            icon: Clock3
         },
         {
             nome: 'Autorizações',
@@ -59,16 +48,6 @@ export function AppLayout() {
             nome: 'Encomendas',
             caminho: '/encomendas',
             icon: Package
-        },
-        {
-            nome: 'Usuários e Permissões',
-            caminho: '/usuarios',
-            icon: UserCog
-        },
-        {
-            nome: 'Configurações',
-            caminho: '/configuracoes',
-            icon: Settings
         }
     ]
 
@@ -90,12 +69,16 @@ export function AppLayout() {
 
                         const Icon = item.icon
 
+                        const ativo =
+                            location.pathname ===
+                            item.caminho
+
                         return (
-                            <NavLink
+                            <a
                                 key={item.caminho}
-                                to={item.caminho}
-                                className={({ isActive }) =>
-                                    isActive
+                                href={item.caminho}
+                                className={
+                                    ativo
                                         ? 'app-sidebar-item active'
                                         : 'app-sidebar-item'
                                 }
@@ -104,10 +87,10 @@ export function AppLayout() {
                                 <Icon size={22} />
 
                                 <span>
-                  {item.nome}
-                </span>
+                                    {item.nome}
+                                </span>
 
-                            </NavLink>
+                            </a>
                         )
                     })}
 
@@ -155,8 +138,8 @@ export function AppLayout() {
                                 </strong>
 
                                 <span>
-                  Administrador
-                </span>
+                                    Administrador
+                                </span>
 
                             </div>
 
@@ -169,7 +152,7 @@ export function AppLayout() {
                 </header>
 
 
-                {/* Aqui entra Dashboard, Autorizações etc. */}
+                {/* Conteúdo da página atual */}
                 <div className="app-page-content">
 
                     <Outlet />
